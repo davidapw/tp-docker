@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  # Serviço 1: Site estático com build customizado
+  site_estatico:
+    build: .
+    container_name: tp_nginx_custom
+    ports:
+      - "8080:80"
+
+  # Serviço 2: App simples usando imagem pronta
+  app_simples:
+    image: hashicorp/http-echo
+    container_name: tp_app_simples
+    command: -text="Ola! Este e o segundo container rodando."
+    ports:
+      - "8081:5678"
